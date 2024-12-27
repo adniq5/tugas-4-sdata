@@ -118,10 +118,12 @@ void hapusData() {
         cout << "\nTidak ada data mahasiswa untuk dihapus.\n";
         return;
     }
+
     string nim;
     cout << "\nMasukkan NIM mahasiswa yang ingin dihapus: ";
     cin.ignore(); // Menghindari masalah dengan buffer input
     getline(cin, nim);
+
     int index = cariDataByNIM(nim);
     if (index != -1) {
         for (int i = index; i < pos; i++) {
@@ -133,12 +135,16 @@ void hapusData() {
         cout << "\nMahasiswa dengan NIM " << nim << " tidak ditemukan.\n";
     }
 }
+
+
 bool konfirmasiKeluar() {
     char pilihan;
     cout << "\nApakah Anda yakin ingin keluar? (y/n): ";
     cin >> pilihan;
     return (pilihan == 'y' || pilihan == 'Y');
 }
+
+
 int main() {
     char pilihan;
     do {
