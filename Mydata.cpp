@@ -140,36 +140,38 @@ bool konfirmasiKeluar() {
     return (pilihan == 'y' || pilihan == 'Y');
 }
 int main() {
-char pl;
-do
-{
-    tampilkanMenu();
-    pl=getch();
-  switch (pl)
-  {
-   case '1':
-    tambahData();
-    break;
-   case '2':
-    tampilkanData();
-    break;  
-   case '3':
-   updateData();
-    break;  
-   case '4':
-   hapusData();
-    break;  
-  case '5':
-    break;
-
-  default:
-    system("cls");
-    cout<<"Pilihan Tidak Tersedia";
-    getch();
-    break;
-  }
-
-
-} while (pl!='5');
-  return 0;
+    char pilihan;
+    do {
+        system("cls");  // Clear screen sebelum menu
+        tampilkanMenu();
+        cin >> pilihan;
+        switch (pilihan) {
+            case '1':
+                tambahData();
+                break;
+            case '2':
+                tampilkanData();
+                break;
+            case '3':
+                updateData();
+                break;
+            case '4':
+                hapusData();
+                break;
+            case '5':
+                if (konfirmasiKeluar()) {
+                    cout << "\nTerima kasih telah menggunakan program ini.\n";
+                    return 0;
+                }
+                break;
+            default:
+                cout << "\nPilihan tidak valid. Coba lagi.\n";
+                break;
+        }
+        // Memberi kesempatan untuk menekan tombol apapun sebelum kembali ke menu
+        cout << "\nTekan enter untuk kembali ke menu...";
+        cin.ignore();  // Mengosongkan buffer
+        cin.get();     // Menunggu input enter dari pengguna
+    } while (pilihan != '5');
+    return 0;
 }
